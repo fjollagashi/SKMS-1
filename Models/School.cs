@@ -3,9 +3,12 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Models {
-    public partial class School {
-        public School() {
+namespace Models
+{
+    public partial class School
+    {
+        public School()
+        {
             Articles = new HashSet<Article>();
             Classrooms = new HashSet<Classroom>();
             Curricula = new HashSet<Curriculum>();
@@ -13,7 +16,7 @@ namespace Models {
             Schoolevents = new HashSet<Schoolevent>();
             Students = new HashSet<Student>();
             Teachers = new HashSet<Teacher>();
-            }
+        }
 
         public Guid SchoolId { get; set; }
         public string SchoolName { get; set; }
@@ -30,5 +33,5 @@ namespace Models {
         public virtual ICollection<Schoolevent> Schoolevents { get; set; }
         public virtual ICollection<Student> Students { get; set; }
         public virtual ICollection<Teacher> Teachers { get; set; }
-        }
     }
+}

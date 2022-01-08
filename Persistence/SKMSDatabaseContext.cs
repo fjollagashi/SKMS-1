@@ -1,18 +1,24 @@
-﻿using Microsoft.EntityFrameworkCore;
-
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Models;
 
 #nullable disable
 
-namespace Persistence {
-    public partial class SKMSContext : DbContext {
-        public SKMSContext() {
-            }
+namespace Persistence
+{
+    public partial class SKMSDatabaseContext : DbContext
+    {
+        public SKMSDatabaseContext()
+        {
+        }
 
-        public SKMSContext(DbContextOptions<SKMSContext> options)
-            : base(options) {
-            }
+        public SKMSDatabaseContext(DbContextOptions<SKMSDatabaseContext> options)
+            : base(options)
+        {
+        }
 
+        public virtual DbSet<Absence> Absences { get; set; }
         public virtual DbSet<Administrator> Administrators { get; set; }
         public virtual DbSet<Article> Articles { get; set; }
         public virtual DbSet<City> Cities { get; set; }
@@ -20,9 +26,11 @@ namespace Persistence {
         public virtual DbSet<Classroom> Classrooms { get; set; }
         public virtual DbSet<Curriculum> Curricula { get; set; }
         public virtual DbSet<Eventcategory> Eventcategories { get; set; }
+        public virtual DbSet<Grade> Grades { get; set; }
         public virtual DbSet<Parent> Parents { get; set; }
         public virtual DbSet<ParentsStudent> ParentsStudents { get; set; }
         public virtual DbSet<Period> Periods { get; set; }
+        public virtual DbSet<Remark> Remarks { get; set; }
         public virtual DbSet<Schedule> Schedules { get; set; }
         public virtual DbSet<School> Schools { get; set; }
         public virtual DbSet<Schoolevent> Schoolevents { get; set; }
@@ -33,16 +41,45 @@ namespace Persistence {
         public virtual DbSet<Teacher> Teachers { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-            if (!optionsBuilder.IsConfigured) {
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
 
-                }
             }
+        }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder) {
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
-            modelBuilder.Entity<Administrator>(entity => {
+            modelBuilder.Entity<Absence>(entity =>
+            {
+                entity.ToTable("ABSENCE");
+
+                entity.Property(e => e.AbsenceId)
+                    .ValueGeneratedNever()
+                    .HasColumnName("AbsenceID");
+
+                entity.Property(e => e.DateMarked).HasColumnType("date");
+
+                entity.Property(e => e.Reasoned)
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.PeriodNavigation)
+                    .WithMany(p => p.Absences)
+                    .HasForeignKey(d => d.Period)
+                    .HasConstraintName("FK__ABSENCE__Period__3E1D39E1");
+
+                entity.HasOne(d => d.StudentNavigation)
+                    .WithMany(p => p.Absences)
+                    .HasForeignKey(d => d.Student)
+                    .HasConstraintName("FK__ABSENCE__Student__3D2915A8");
+            });
+
+            modelBuilder.Entity<Administrator>(entity =>
+            {
                 entity.ToTable("ADMINISTRATOR");
 
                 entity.Property(e => e.AdministratorId)
@@ -68,7 +105,8 @@ namespace Persistence {
                     .HasConstraintName("FK__ADMINISTR__Admin__29572725");
             });
 
-            modelBuilder.Entity<Article>(entity => {
+            modelBuilder.Entity<Article>(entity =>
+            {
                 entity.ToTable("ARTICLE");
 
                 entity.Property(e => e.ArticleId)
@@ -95,7 +133,8 @@ namespace Persistence {
                     .HasConstraintName("FK__ARTICLE__School__75A278F5");
             });
 
-            modelBuilder.Entity<City>(entity => {
+            modelBuilder.Entity<City>(entity =>
+            {
                 entity.ToTable("CITY");
 
                 entity.Property(e => e.CityId)
@@ -112,7 +151,8 @@ namespace Persistence {
                     .HasConstraintName("FK__CITY__Municipali__20C1E124");
             });
 
-            modelBuilder.Entity<Classgroup>(entity => {
+            modelBuilder.Entity<Classgroup>(entity =>
+            {
                 entity.HasKey(e => e.GroupId)
                     .HasName("PK__CLASSGRO__149AF30AA60D3BC2");
 
@@ -140,7 +180,8 @@ namespace Persistence {
                     .HasConstraintName("FK__CLASSGROU__Homer__5441852A");
             });
 
-            modelBuilder.Entity<Classroom>(entity => {
+            modelBuilder.Entity<Classroom>(entity =>
+            {
                 entity.ToTable("CLASSROOM");
 
                 entity.Property(e => e.ClassroomId)
@@ -157,7 +198,8 @@ namespace Persistence {
                     .HasConstraintName("FK__CLASSROOM__Schoo__3F466844");
             });
 
-            modelBuilder.Entity<Curriculum>(entity => {
+            modelBuilder.Entity<Curriculum>(entity =>
+            {
                 entity.ToTable("CURRICULUM");
 
                 entity.Property(e => e.CurriculumId)
@@ -170,7 +212,8 @@ namespace Persistence {
                     .HasConstraintName("FK__CURRICULU__Schoo__6477ECF3");
             });
 
-            modelBuilder.Entity<Eventcategory>(entity => {
+            modelBuilder.Entity<Eventcategory>(entity =>
+            {
                 entity.HasKey(e => e.CategoryId)
                     .HasName("PK__EVENTCAT__19093A2B95D8088A");
 
@@ -185,7 +228,27 @@ namespace Persistence {
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<Parent>(entity => {
+            modelBuilder.Entity<Grade>(entity =>
+            {
+                entity.ToTable("GRADE");
+
+                entity.Property(e => e.GradeId)
+                    .ValueGeneratedNever()
+                    .HasColumnName("GradeID");
+
+                entity.HasOne(d => d.StudentNavigation)
+                    .WithMany(p => p.Grades)
+                    .HasForeignKey(d => d.Student)
+                    .HasConstraintName("FK__GRADE__Student__395884C4");
+
+                entity.HasOne(d => d.SubjectsTeacher)
+                    .WithMany(p => p.Grades)
+                    .HasForeignKey(d => new { d.Teacher, d.Subject })
+                    .HasConstraintName("FK__GRADE__3A4CA8FD");
+            });
+
+            modelBuilder.Entity<Parent>(entity =>
+            {
                 entity.ToTable("PARENT");
 
                 entity.Property(e => e.ParentId)
@@ -203,7 +266,8 @@ namespace Persistence {
                     .HasConstraintName("FK__PARENT__ParentID__5AEE82B9");
             });
 
-            modelBuilder.Entity<ParentsStudent>(entity => {
+            modelBuilder.Entity<ParentsStudent>(entity =>
+            {
                 entity.HasKey(e => new { e.StudentId, e.ParentId })
                     .HasName("PK__PARENTS___DFF6BF69BC82C4A4");
 
@@ -226,7 +290,8 @@ namespace Persistence {
                     .HasConstraintName("FK__PARENTS_S__Stude__5DCAEF64");
             });
 
-            modelBuilder.Entity<Period>(entity => {
+            modelBuilder.Entity<Period>(entity =>
+            {
                 entity.ToTable("PERIOD");
 
                 entity.Property(e => e.PeriodId)
@@ -252,7 +317,33 @@ namespace Persistence {
                     .HasConstraintName("FK__PERIOD__72C60C4A");
             });
 
-            modelBuilder.Entity<Schedule>(entity => {
+            modelBuilder.Entity<Remark>(entity =>
+            {
+                entity.ToTable("REMARK");
+
+                entity.Property(e => e.RemarkId)
+                    .ValueGeneratedNever()
+                    .HasColumnName("RemarkID");
+
+                entity.Property(e => e.Comment)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.DateMarked).HasColumnType("date");
+
+                entity.HasOne(d => d.StudentNavigation)
+                    .WithMany(p => p.Remarks)
+                    .HasForeignKey(d => d.Student)
+                    .HasConstraintName("FK__REMARK__Student__40F9A68C");
+
+                entity.HasOne(d => d.TeacherNavigation)
+                    .WithMany(p => p.Remarks)
+                    .HasForeignKey(d => d.Teacher)
+                    .HasConstraintName("FK__REMARK__Teacher__41EDCAC5");
+            });
+
+            modelBuilder.Entity<Schedule>(entity =>
+            {
                 entity.ToTable("SCHEDULE");
 
                 entity.Property(e => e.ScheduleId)
@@ -274,7 +365,8 @@ namespace Persistence {
                     .HasConstraintName("FK__SCHEDULE__School__14270015");
             });
 
-            modelBuilder.Entity<School>(entity => {
+            modelBuilder.Entity<School>(entity =>
+            {
                 entity.ToTable("SCHOOL");
 
                 entity.HasIndex(e => e.Administrator, "UQ__SCHOOL__55BB7AE5BF660F83")
@@ -303,7 +395,8 @@ namespace Persistence {
                     .HasConstraintName("FK__SCHOOL__SchoolAd__32E0915F");
             });
 
-            modelBuilder.Entity<Schoolevent>(entity => {
+            modelBuilder.Entity<Schoolevent>(entity =>
+            {
                 entity.HasKey(e => e.EventId)
                     .HasName("PK__SCHOOLEV__7944C870327B574B");
 
@@ -334,7 +427,8 @@ namespace Persistence {
                     .HasConstraintName("FK__SCHOOLEVE__Schoo__7B5B524B");
             });
 
-            modelBuilder.Entity<Street>(entity => {
+            modelBuilder.Entity<Street>(entity =>
+            {
                 entity.ToTable("STREET");
 
                 entity.Property(e => e.StreetId)
@@ -351,7 +445,8 @@ namespace Persistence {
                     .HasConstraintName("FK__STREET__City__239E4DCF");
             });
 
-            modelBuilder.Entity<Student>(entity => {
+            modelBuilder.Entity<Student>(entity =>
+            {
                 entity.ToTable("STUDENT");
 
                 entity.Property(e => e.StudentId)
@@ -375,7 +470,8 @@ namespace Persistence {
                     .HasConstraintName("FK__STUDENT__Student__571DF1D5");
             });
 
-            modelBuilder.Entity<Subject>(entity => {
+            modelBuilder.Entity<Subject>(entity =>
+            {
                 entity.ToTable("SUBJECT");
 
                 entity.Property(e => e.SubjectId)
@@ -392,7 +488,8 @@ namespace Persistence {
                     .HasConstraintName("FK__SUBJECT__Curriul__6754599E");
             });
 
-            modelBuilder.Entity<SubjectsTeacher>(entity => {
+            modelBuilder.Entity<SubjectsTeacher>(entity =>
+            {
                 entity.HasKey(e => new { e.SubjectId, e.TeacherId })
                     .HasName("PK__SUBJECTS__F2C4861C96F05027");
 
@@ -415,7 +512,8 @@ namespace Persistence {
                     .HasConstraintName("FK__SUBJECTS___Teach__6B24EA82");
             });
 
-            modelBuilder.Entity<Teacher>(entity => {
+            modelBuilder.Entity<Teacher>(entity =>
+            {
                 entity.ToTable("TEACHER");
 
                 entity.Property(e => e.TeacherId)
@@ -446,7 +544,8 @@ namespace Persistence {
                     .HasConstraintName("FK__TEACHER__Teacher__4E88ABD4");
             });
 
-            modelBuilder.Entity<User>(entity => {
+            modelBuilder.Entity<User>(entity =>
+            {
                 entity.ToTable("USERS");
 
                 entity.Property(e => e.UserId)
@@ -483,8 +582,8 @@ namespace Persistence {
             });
 
             OnModelCreatingPartial(modelBuilder);
-            }
+        }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-        }
     }
+}

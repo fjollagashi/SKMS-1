@@ -3,11 +3,15 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Models {
-    public partial class Teacher {
-        public Teacher() {
+namespace Models
+{
+    public partial class Teacher
+    {
+        public Teacher()
+        {
+            Remarks = new HashSet<Remark>();
             SubjectsTeachers = new HashSet<SubjectsTeacher>();
-            }
+        }
 
         public Guid TeacherId { get; set; }
         public string AcademicDegree { get; set; }
@@ -18,6 +22,7 @@ namespace Models {
         public virtual School SchoolNavigation { get; set; }
         public virtual User TeacherNavigation { get; set; }
         public virtual Classgroup Classgroup { get; set; }
+        public virtual ICollection<Remark> Remarks { get; set; }
         public virtual ICollection<SubjectsTeacher> SubjectsTeachers { get; set; }
-        }
     }
+}

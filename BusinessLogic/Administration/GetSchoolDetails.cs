@@ -17,9 +17,9 @@ namespace BusinessLogic.Administration {
 
         public class Handler : IRequestHandler<Query, School> {
 
-            private readonly SKMSContext _context;
+            private readonly SKMSDatabaseContext _context;
 
-            public Handler(SKMSContext context) { _context = context; }
+            public Handler(SKMSDatabaseContext context) { _context = context; }
 
             public async Task<School> Handle(Query request, CancellationToken token) {
                 return await _context.Schools.FindAsync(request.SchoolID);

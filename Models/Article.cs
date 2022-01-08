@@ -3,8 +3,10 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Models {
-    public partial class Article {
+namespace Models
+{
+    public partial class Article
+    {
         public Guid ArticleId { get; set; }
         public string Title { get; set; }
         public string Contents { get; set; }
@@ -13,5 +15,5 @@ namespace Models {
         public Guid? School { get; set; }
 
         public virtual School SchoolNavigation { get; set; }
-        }
     }
+}

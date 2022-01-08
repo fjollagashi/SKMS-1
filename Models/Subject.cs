@@ -3,11 +3,14 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Models {
-    public partial class Subject {
-        public Subject() {
+namespace Models
+{
+    public partial class Subject
+    {
+        public Subject()
+        {
             SubjectsTeachers = new HashSet<SubjectsTeacher>();
-            }
+        }
 
         public Guid SubjectId { get; set; }
         public string SubjectName { get; set; }
@@ -15,5 +18,5 @@ namespace Models {
 
         public virtual Curriculum CurriulumNavigation { get; set; }
         public virtual ICollection<SubjectsTeacher> SubjectsTeachers { get; set; }
-        }
     }
+}

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Models {
-    public partial class Schoolevent {
+namespace Models
+{
+    public partial class Schoolevent
+    {
         public Guid EventId { get; set; }
         public string Title { get; set; }
         public string EventDescription { get; set; }
@@ -14,5 +16,5 @@ namespace Models {
 
         public virtual Eventcategory CategoryNavigation { get; set; }
         public virtual School SchoolNavigation { get; set; }
-        }
     }
+}

@@ -25,7 +25,7 @@ namespace Services {
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Services", Version = "v1" });
             });
-            services.AddDbContext<SKMSContext>(options => options.UseSqlServer("Data Source=SKMSDatabase.mssql.somee.com;Initial Catalog=SKMSDatabase;User ID=BC00001_SQLLogin_1;Password=nhldr7e84u"));
+            services.AddDbContext<SKMSDatabaseContext>(options => options.UseSqlServer("Data Source=SKMSDatabase.mssql.somee.com;Initial Catalog=SKMSDatabase;User ID=BC00001_SQLLogin_1;Password=nhldr7e84u"));
             services.AddCors(opt => {
                 opt.AddPolicy("CorsPolicy", policy => {
                     policy.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:3000", "https://localhost:3000");
