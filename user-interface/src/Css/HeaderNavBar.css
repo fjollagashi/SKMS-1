@@ -1,0 +1,25 @@
+.navbar {
+  position: relative;
+  width: 60%;
+  left: 20%;
+  padding: 0;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.navbar li {
+  width: 20%;
+  padding: 1%;
+  background-color: #4472b6;
+  color: white;
+  font-weight: bolder;
+  font-size: 1.2em;
+  text-align: center;
+  border-left: 0.1px solid rgba(255, 255, 255, 0.6);
+  border-right: 0.1px solid rgba(255, 255, 255, 0.6);
+}
+
+.navbar li:hover,
+.navbar .clicked {
+  background-color: #7895c2;
+}

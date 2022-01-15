@@ -1,0 +1,70 @@
+#LogIn {
+  height: 80%;
+}
+
+#LogIn form p:first-child {
+  background-color: #0043a7;
+  color: white;
+  font-size: 1.5em;
+  border-radius: 45px 45px 0px 0px;
+  text-align: center;
+  padding: 2.5%;
+}
+
+#LogIn form {
+  position: relative;
+  background-color: white;
+  width: 60%;
+  border: 2pt solid #0043a7;
+  border-radius: 50px;
+}
+
+#LogIn form img {
+  width: 20%;
+  position: relative;
+  left: 35%;
+  margin: 5%;
+}
+
+.formFields {
+  color: gray;
+  margin: 7.5%;
+  position: relative;
+  left: 2.25%;
+  width: 80%;
+}
+
+.formFields input {
+  width: 40%;
+  text-align: right;
+}
+
+main {
+  background-color: transparent;
+  border: none;
+}
+
+#LogIn button {
+  border: none;
+  outline: none;
+  color: white;
+  background-color: #fdc90b;
+  font-size: 1.25em;
+  margin-bottom: 2%;
+  border-radius: 2.5px;
+  padding: 1.5%;
+  width: 25%;
+  text-align: center;
+  position: relative;
+  left: 37.5%;
+  margin-bottom: 5%;
+}
+
+.info {
+  text-align: center;
+  width: 80%;
+  position: relative;
+  border-top: 2pt solid gray;
+  left: 10%;
+  padding: 2.5%;
+}

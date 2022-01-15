@@ -1,0 +1,29 @@
+footer {
+  display: block;
+  position: static;
+  background-color: hsla(216, 100%, 33%, 0.6);
+  height: auto;
+}
+
+footer ul {
+  position: relative;
+  height: 20vh;
+  align-items: center;
+}
+
+footer ul li p:first-child {
+  color: white;
+  font-weight: bolder;
+  font-size: 1.5em;
+}
+
+footer ul li p {
+  font-size: 1.25em;
+}
+
+footer ul li img {
+  position: relative;
+  left: 60%;
+  width: 40%;
+  opacity: 0.4;
+}

@@ -1,0 +1,169 @@
+main {
+  min-height: 60vh;
+}
+
+#Child {
+  background-color: white;
+  border: 1pt solid grey;
+}
+
+#Child > h2 {
+  font-size: 2em;
+  margin: 2.5%;
+  text-align: center;
+  color: gray;
+}
+
+#Child .child-bluebackground {
+  font-size: 1.2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0043a7;
+  padding: 5%;
+  margin: 2.5%;
+  border-radius: 50px;
+}
+
+#Child .child-bluebackground * {
+  margin-top: 2.5%;
+}
+
+.child-bluebackground button {
+  align-self: flex-start;
+  width: 15%;
+  padding: 1%;
+  color: #0043a7;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  background-color: #ffcc00;
+}
+
+.child-bluebackground img {
+  width: 40%;
+}
+
+.child-details {
+  width: 80%;
+}
+
+#Child .child-details article {
+  width: 100%;
+  border-top: 2pt solid #ffcc00;
+  padding: 2%;
+}
+
+#Child article h3 {
+  color: #ffcc00;
+  text-align: center;
+}
+
+#Child article p {
+  color: white;
+  text-align: center;
+}
+
+.child-bluebackground h2 {
+  color: white;
+}
+
+.child-details-school button {
+  position: relative;
+  left: 32.5%;
+  width: 35%;
+  padding: 2.5%;
+}
+
+#Schedule {
+  border-collapse: collapse;
+  margin: 2.5%;
+}
+
+#Schedule thead {
+  /* border-bottom: 1pt solid black; */
+  background-color: #0043a7;
+  color: #ffcc00;
+}
+
+#Schedule td {
+  padding: 1%;
+  width: 10%;
+  text-align: center;
+}
+
+#Schedule tr td:first-child {
+  /* border-right: 1pt solid black; */
+  color: #ffcc00;
+  background-color: #0043a7;
+}
+
+article.remark,
+article.absence {
+  margin: 2.5%;
+  background-color: #0043a7;
+  border: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5%;
+  border-radius: 50px;
+}
+
+article.remark div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+article.remark div h3 {
+  text-align: left;
+  color: red;
+}
+
+article.remark div h5 {
+  color: #ffffff;
+  margin: 2.5%;
+}
+
+article.remark p {
+  width: 70%;
+  color: red;
+}
+
+article.absence {
+  align-items: flex-end;
+}
+article.absence h2 {
+  color: #ffcc00;
+}
+
+article.absence h5 {
+  color: white;
+  margin-top: 10%;
+}
+
+#grades {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}
+
+#grades select {
+  background-color: #0043a7;
+  color: white;
+  border: none;
+  font-size: 0.8em;
+}
+
+#grades table.grades-table {
+  background-color: #ffcc00;
+  border-radius: 50px;
+  padding: 25px;
+  color: #0043a7;
+  text-align: center;
+}

@@ -1,0 +1,34 @@
+header {
+  position: fixed;
+  margin: 0;
+  width: 100%;
+  background-color: #0043a7;
+  z-index: 1;
+  /* display: none; */
+}
+
+header ul {
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* School name */
+.mainheader li:nth-child(2) {
+  text-align: center;
+  position: relative;
+  left: 9%;
+  font-size: 30px;
+  font-weight: bolder;
+  width: 49%;
+}
+
+.mainheader li p {
+  color: white;
+  font-weight: bolder;
+  font-size: 1.3em;
+  text-align: right;
+}
+
+header ul li img {
+  width: 5vw;
+}

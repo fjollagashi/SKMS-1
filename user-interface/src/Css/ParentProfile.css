@@ -1,0 +1,64 @@
+#ParentProfile {
+  background-color: white;
+  border: 1pt solid gray;
+  min-height: 60vh;
+}
+
+#ParentProfile > div {
+  background-color: #0043a7;
+  border-radius: 50px;
+  margin: 5%;
+  padding: 5%;
+  min-height: 50vh;
+}
+
+#ParentProfile img {
+  width: 70%;
+}
+
+#ParentProfile p,
+#ParentProfile h2 {
+  width: 70%;
+  color: white;
+  text-align: center;
+}
+
+#ParentProfile .profile-parent-details {
+  width: 100%;
+  height: 100%;
+}
+
+#ParentProfile .profile-parent-details article {
+  border-top: 2pt solid #ffcc00;
+  padding: 2%;
+}
+
+#ParentProfile .profile-parent-details article:last-child {
+  border-bottom: 2pt solid #ffcc00;
+}
+
+#ParentProfile .profile-parent-details h3 {
+  color: #ffcc00;
+  text-align: center;
+  margin-bottom: 2%;
+  font-size: 1.5em;
+}
+
+#ParentProfile .profile-parent-details p {
+  text-align: center;
+  width: 100%;
+  font-size: 1.2em;
+}
+
+#ParentProfile button {
+  position: relative;
+  color: #0043a7;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  background-color: #ffcc00;
+  left: 42.5%;
+  margin-top: 10%;
+  width: 15%;
+  padding: 2%;
+}

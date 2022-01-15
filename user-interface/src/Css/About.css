@@ -1,0 +1,25 @@
+#About {
+  border: 1pt solid gray;
+  background-color: white;
+  min-height: 60vh;
+}
+
+#About .about-yellowbox {
+  margin: 5%;
+  background-color: #fff3c5;
+  padding: 5%;
+  border-radius: 50px;
+  min-height: 50vh;
+}
+
+#About h2 {
+  color: #0043a7;
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 5%;
+}
+
+#About .about-yellowbox p {
+  color: #7587a1;
+  text-align: justify;
+}

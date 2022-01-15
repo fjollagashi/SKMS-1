@@ -1,0 +1,61 @@
+#Children {
+  background-color: white;
+  min-height: 60vh;
+  border: 1pt solid gray;
+}
+
+#Children .children-yellowbox {
+  margin-top: 5%;
+  background-color: #fff3c5;
+  padding: 2.5%;
+  border-radius: 50px;
+}
+
+#Children article {
+  padding: 2.5%;
+  border-top: 2pt solid gray;
+  margin: 5%;
+}
+
+#Children article img {
+  width: 35%;
+  border-radius: 50px;
+  margin: 5%;
+  border: 2pt solid gray;
+}
+
+#Children h2 {
+  font-size: 2em;
+  margin: 5%;
+  text-align: center;
+}
+
+.children-details {
+  margin: 5%;
+  color: gray;
+}
+
+.children-details p {
+  font-size: 1.4em;
+}
+
+.children-details :nth-child(3) {
+  margin-top: 10%;
+}
+
+.children-details h3 {
+  color: #0043a7;
+  font-size: 2em;
+}
+
+.children-details button {
+  position: relative;
+  outline: none;
+  border: none;
+  color: white;
+  background-color: #ffcc00;
+  border-radius: 5px;
+  width: 100%;
+  padding: 5%;
+  top: 22.5%;
+}

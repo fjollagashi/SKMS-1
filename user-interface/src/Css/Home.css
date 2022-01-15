@@ -1,0 +1,71 @@
+main {
+  min-height: 60vh;
+}
+
+#Home {
+  background-color: white;
+  border: 1pt solid grey;
+}
+
+#Home h2 {
+  text-align: center;
+  font-size: 2.5em;
+  padding: 1%;
+  margin: 1%;
+  color: #7587a1;
+}
+
+#Home h5 {
+  color: #7587a1;
+}
+
+#Home p {
+  color: #7587a1;
+}
+
+#Home article {
+  width: 90%;
+  position: relative;
+  left: 5%;
+  padding: 1%;
+  border-top: 2pt solid #0043a7;
+}
+
+#Home article div.article-yellow {
+  font-size: 1.2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #fff3c5;
+  padding: 5%;
+  margin: 2.5% 0% 2.5% 0%;
+  border-radius: 50px;
+}
+
+#Home article:nth-child(odd) div.article-yellow img {
+  order: 1;
+}
+
+#Home article:nth-child(odd) div.article-yellow {
+  text-align: right;
+}
+
+#Home article:nth-child(odd) div.article-yellow p {
+  text-align: right;
+}
+
+#Home article div div {
+  color: #0043a7;
+  width: 50%;
+}
+
+#Home article div div p {
+  margin-top: 5%;
+  text-align: left;
+}
+
+#Home article img {
+  width: 40%;
+  border-radius: 30px;
+  box-shadow: 1px 1px 5px gray;
+}
