@@ -12,12 +12,12 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
 }) => {
   return (
     <>
-      <div className="modal-background"></div>
-      <div className="modal">
+      <div className="modal-background background-open"></div>
+      <div className="modal modal-open">
         <div className="modal-contents">
           {children}
           <button id="modal-cancel" onClick={hide}>
-            KTHEHU
+            MBYLL
           </button>
         </div>
       </div>

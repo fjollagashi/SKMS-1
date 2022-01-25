@@ -10,7 +10,7 @@ interface props {
   logOut: () => void;
 }
 
-export const ParentProfile: React.FunctionComponent<props> = ({ logOut }) => {
+export const AdminProfile: React.FunctionComponent<props> = ({ logOut }) => {
   return (
     <section id="ParentProfile">
       <div className="profile-blue">
@@ -20,13 +20,13 @@ export const ParentProfile: React.FunctionComponent<props> = ({ logOut }) => {
               src="https://th.bing.com/th/id/OIP.BHOqw309oBOx1BIr2aa1ewHaHa?pid=ImgDet&rs=1"
               alt=""
             />
-            <h2>Andrea Ibrahimaj</h2>
-            <p>23 Gusht, 1987</p>
+            <h2>Adriatik Kelmendi</h2>
+            <p>23 Gusht, 1977</p>
           </div>
           <div className="profile-parent-details">
             <article>
-              <h3>Fëmijët</h3>
-              <p>dsfds,fsdfsdf,sdfs</p>
+              <h3>Shkolla</h3>
+              <p>Shkolla Fillore dhe e Mesme e Ulët "Hysni Zajmi"</p>
             </article>
             <article>
               <h3>Numri i telefonit</h3>

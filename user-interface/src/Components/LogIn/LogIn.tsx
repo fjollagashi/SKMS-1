@@ -1,7 +1,11 @@
 import "../../Css/LogIn.css";
 import Logo from "../../Media/logo.png";
 
-export const LogIn = () => {
+interface LogInProps {
+  logIn: () => void;
+}
+
+export const LogIn: React.FunctionComponent<LogInProps> = ({ logIn }) => {
   return (
     <section
       className="flex flex-column justify-center align-center"
@@ -18,7 +22,7 @@ export const LogIn = () => {
           <span>KODI I QASJES</span>
           <input type="text" name="NrIdentifikuesField" id="" />
         </p>
-        <button>KYÇU</button>
+        <button onClick={logIn}>KYÇUNI</button>
         <p className="info">
           Keni pyetje?<span className="bluetext"> Na kontaktoni këtu. </span>
         </p>

@@ -1,0 +1,117 @@
+.student-blue {
+  background-color: #0043a7;
+  border-radius: 50px;
+  margin: 2.5%;
+  padding: 2.5%;
+  min-height: 50vh;
+}
+
+.student-modal > h2 {
+  text-align: center;
+  font-size: 1.8em;
+  margin-top: 1%;
+}
+
+.student-modal table {
+  width: 95%;
+  margin: 2.5%;
+  border-collapse: collapse;
+}
+
+.student-modal table thead {
+  background-color: #ffcc00;
+  font-size: 1.5em;
+  color: #0043a7;
+}
+
+.student-modal table tbody td {
+  border-bottom: 2pt solid #ffcc00;
+  color: white;
+  font-size: 1.2em;
+}
+
+.student-modal table td {
+  padding: 1%;
+  text-align: center;
+}
+
+.student-modal button {
+  width: 100%;
+  font-size: 0.6em;
+  border-radius: 15px;
+  outline: none;
+  border: none;
+  color: #0043a7;
+  padding: 2%;
+}
+
+.student-blue > button {
+  width: 15%;
+  background-color: #ffcc00;
+  display: block;
+}
+
+.student-blue > img {
+  position: relative;
+  width: 30%;
+  margin: 5%;
+  left: 30%;
+}
+
+.student-blue article {
+  text-align: center;
+  position: relative;
+  left: 25%;
+  width: 50%;
+  border-top: 2pt solid gold;
+  padding: 2%;
+}
+
+.student-blue article:last-child {
+  border-bottom: 2pt solid #ffcc00;
+}
+
+.student-blue article h3 {
+  color: #ffcc00;
+  font: 2em;
+}
+.student-blue article p {
+  color: white;
+}
+
+.create-modal-section {
+  width: 70%;
+  margin-left: 15%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 5%;
+}
+
+.create-modal-section span {
+  color: #ffcc00;
+  font-size: 1.5em;
+  background-color: #255db3;
+  box-shadow: 1px 1px 1px white;
+  padding: 2%;
+  border-radius: 50px;
+}
+
+.create-modal-section input {
+  padding: 3px;
+  font-size: 1.1em;
+}
+
+.create-modal-section:last-child {
+  justify-content: space-around;
+}
+
+.create-modal-section button {
+  background-color: #ffcc00;
+  width: 30%;
+}
+
+.create-modal-section button:last-child {
+  background-color: white;
+  color: #0043a7;
+}

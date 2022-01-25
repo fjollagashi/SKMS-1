@@ -1,0 +1,77 @@
+main {
+  min-height: 60vh;
+}
+
+#Manage {
+  background-color: white;
+  border: 1pt solid gray;
+}
+
+#Manage > h2 {
+  text-align: center;
+  margin: 5%;
+  font-size: 2em;
+  color: gray;
+}
+
+#Manage > div.backgr {
+  background-color: #0043a7;
+  border-radius: 50px;
+  margin: 5%;
+  padding: 5%;
+  min-height: 50vh;
+}
+
+#Manage div.backgr > h2 {
+  font-size: 1.5em;
+  color: white;
+  padding: 1%;
+  text-align: center;
+  border-top: 2pt solid white;
+  border-bottom: 2pt solid white;
+  margin-bottom: 5%;
+}
+
+#Manage .yellow-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.yellow-button {
+  width: 45%;
+  background-color: #ffcc00;
+  border-radius: 50px;
+  padding: 3% 0% 3% 0%;
+  margin: 1%;
+}
+
+.yellow-button * {
+  margin: 5%;
+  text-align: center;
+}
+
+.yellow-button h3 {
+  color: #0043a7;
+  font-size: 125%;
+}
+
+.yellow-button h2 {
+  color: white;
+  font-size: 250%;
+}
+
+.yellow-button button {
+  position: relative;
+  left: 20%;
+  color: white;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  background-color: #0043a7;
+  margin-top: 10%;
+  width: 50%;
+  padding: 5%;
+}

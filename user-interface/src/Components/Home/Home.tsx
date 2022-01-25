@@ -4,7 +4,7 @@ import React from "react";
 import { IArticle } from "../InterfaceRepository/IArticle";
 import { Loader } from "../Loader/Loader";
 
-const fakeArticles: IArticle[] = [
+const FakeArticles: IArticle[] = [
   {
     articleId: "Sdfds",
     title: "Shkolla Hysni Zajmi me banjo të re",
@@ -47,7 +47,7 @@ export const Home = () => {
   const [Articles, SetArticles] = React.useState<IArticle[]>([] as IArticle[]);
 
   return (
-    <section id="Home">
+    <section onClick={() => SetArticles(FakeArticles)} id="Home">
       {Articles.length === 0 ? (
         <Loader />
       ) : (

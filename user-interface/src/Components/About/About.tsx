@@ -4,10 +4,12 @@ import { Loader } from "../Loader/Loader";
 import "../../Css/About.css";
 
 const FakeSchool: ISchool = {
-  schoolId: "sdfsd",
-  schoolName: 'Shkolla Fillore dhe e Mesme e Ulët "Hysni Zajmi"',
-  about:
-    "lorem ipsum dosdlfksdiofhsdufhsdufsdufgsduifg sudgfsdukg fkjsdgf kjsdgfjk sdgfkj sdgjk fsgkdjs gflorem ipsum dosdlfksdiofhsdufhsdufsdufgsduifg sudgfsdukg fkjsdgf kjsdgfjk sdgfkj sdgjk fsgkdjs gflorem ipsum dosdlfksdiofhsdufhsdufsdufgsduifg sudgfsdukg fkjsdgf kjsdgfjk sdgfkj sdgjk fsgkdjs gflorem ipsum dosdlfksdiofhsdufhsdufsdufgsduifg sudgfsdukg fkjsdgf kjsdgfjk sdgfkj sdgjk fsgkdjs gflorem ipsum dosdlfksdiofhsdufhsdufsdufgsduifg sudgfsdukg fkjsdgf kjsdgfjk sdgfkj sdgjk fsgkdjs gflorem ipsum dosdlfksdiofhsdufhsdufsdufgsduifg sudgfsdukg fkjsdgf kjsdgfjk sdgfkj sdgjk fsgkdjs gflorem ipsum dosdlfksdiofhsdufhsdufsdufgsduifg sudgfsdukg fkjsdgf kjsdgfjk sdgfkj sdgjk fsgkdjs gf",
+  schoolId: "sdfs",
+  schoolName: 'Shkolla Fillore dhe e Mesme e Ulët " Hysni Zajmi "',
+  about: "dsfsdf",
+  category: "Fillore",
+  schoolAddress: "123-3",
+  administrator: "",
 };
 
 export const About = () => {

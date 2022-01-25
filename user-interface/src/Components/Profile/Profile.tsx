@@ -1,14 +1,17 @@
+import { AdminProfile } from "../AdminInterface/AdminProfile";
 import { ParentProfile } from "../ParentInterface/ParentProfile";
 
 interface ProfileProps {
-  role: string;
+  logOut: () => void;
 }
 
-export const Profile: React.FunctionComponent<ProfileProps> = ({ role }) => {
+export const Profile: React.FunctionComponent<ProfileProps> = ({ logOut }) => {
+  let role = localStorage.getItem("ROLE");
+
   return (
     <>
-      {role === "PARENT" && <ParentProfile />}
-      {role === "dsfs" && <div>dsfsd</div>}
+      {role === "PARENT" && <ParentProfile logOut={logOut} />}
+      {role === "ADMIN" && <AdminProfile logOut={logOut} />}
     </>
   );
 };

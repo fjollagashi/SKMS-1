@@ -12,10 +12,21 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Molde;
-  font-stretch: semi-condensed;
+  font-family: Molde !important;
+  font-stretch: semi-condensed !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+select {
+  font-family: Molde !important;
+  font-stretch: semi-condensed !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+select option {
+  font-size: 140%;
 }
 
 #background {

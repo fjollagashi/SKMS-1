@@ -9,6 +9,7 @@ namespace Models
     {
         public Guid GradeId { get; set; }
         public Guid? Student { get; set; }
+		//Subject is Teacher, and Teacher is Subject
         public Guid? Subject { get; set; }
         public Guid? Teacher { get; set; }
         public int? Value { get; set; }

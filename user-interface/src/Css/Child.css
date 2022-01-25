@@ -157,7 +157,17 @@ article.absence h5 {
   background-color: #0043a7;
   color: white;
   border: none;
-  font-size: 0.8em;
+  font-size: 1em;
+  padding: 0.5%;
+  border-bottom: 1.5pt solid #ffcc00;
+}
+
+#grades select:focus {
+  outline: none;
+}
+
+#grades select option {
+  font-size: 100%;
 }
 
 #grades table.grades-table {
