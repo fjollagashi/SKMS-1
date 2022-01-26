@@ -11,6 +11,8 @@ namespace BusinessLogic.Core
              CreateMap<Student ,Student>();
              CreateMap<Teacher ,Teacher>();
             CreateMap<Subject ,Subject>();
+            CreateMap<Classroom ,Classroom>();
+            CreateMap<Classgroup ,Classgroup>();
          }
     }
 }

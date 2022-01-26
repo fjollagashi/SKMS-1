@@ -12,7 +12,7 @@ namespace Services.Controllers
         
     [HttpGet]
 
-    public async Task<ActionResult<List<Student>>> GetStudent()
+    public async Task<ActionResult<List<Student>>> GetStudents()
     {
         return await Mediator.Send(new List.Query());
     }
