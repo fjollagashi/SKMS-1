@@ -8,6 +8,7 @@ namespace BusinessLogic.Core
          public MappingProfiles()
          {
              CreateMap<Curriculum ,Curriculum>();
+             CreateMap<Student ,Student>();
          }
     }
 }

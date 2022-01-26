@@ -10,9 +10,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
 using Persistence;
-using BusinessLogic.Curriculums;
+
 using AutoMapper;
 using BusinessLogic.Core;
+using BusinessLogic.Curriculums;
 
 namespace Services {
     public class Startup {
@@ -37,6 +38,7 @@ namespace Services {
             });
             services.AddMediatR(typeof(GetSchoolDetails.Handler).Assembly);
             services.AddMediatR(typeof(List.Handler).Assembly);
+            
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
             }
 

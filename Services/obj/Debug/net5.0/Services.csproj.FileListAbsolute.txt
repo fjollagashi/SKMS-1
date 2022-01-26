@@ -140,6 +140,3 @@ C:\Users\PC\Documents\GitHub\SKMS\Services\bin\Debug\net5.0\Mediator.dll
 C:\Users\PC\Documents\GitHub\SKMS\Services\bin\Debug\net5.0\ServiceStack.Text.dll
 C:\Users\PC\Documents\GitHub\SKMS\Services\bin\Debug\net5.0\AutoMapper.dll
 C:\Users\PC\Documents\GitHub\SKMS\Services\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-C:\Users\PC\Documents\GitHub\SKMS\Services\obj\Debug\net5.0\Services.dll
-C:\Users\PC\Documents\GitHub\SKMS\Services\obj\Debug\net5.0\ref\Services.dll
-C:\Users\PC\Documents\GitHub\SKMS\Services\obj\Debug\net5.0\Services.pdb

@@ -6,17 +6,17 @@ using MediatR;
 using Models;
 using Persistence;
 
-namespace BusinessLogic.Curriculums
+namespace BusinessLogic.Students
 {
 
     public class Details
     {
-        public class Query : IRequest<Curriculum>
+        public class Query : IRequest<Student>
         {
             public Guid Id { get; set; }
         }
 
-        public class Handler : IRequestHandler<Query, Curriculum>
+        public class Handler : IRequestHandler<Query, Student>
         {
             private readonly SKMSDatabaseContext context;
             public Handler(SKMSDatabaseContext context)
@@ -24,9 +24,9 @@ namespace BusinessLogic.Curriculums
                 this.context = context;
             }
 
-            public async Task<Curriculum> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Student> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await context.Curricula.FindAsync(request.Id);
+                return await context.Students.FindAsync(request.Id);
             }
         }
     }
