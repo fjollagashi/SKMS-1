@@ -1,4 +1,5 @@
 using MediatR;
+using BusinessLogic.Administration;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,6 +10,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
 using Persistence;
+using BusinessLogic.Curriculums;
+using AutoMapper;
+using BusinessLogic.Core;
 
 namespace Services {
     public class Startup {
@@ -31,7 +35,9 @@ namespace Services {
                     policy.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:3000", "https://localhost:3000");
                 });
             });
-            services.AddMediatR(typeof(BusinessLogic.Administration.GetSchoolDetails.Handler).Assembly);
+            services.AddMediatR(typeof(GetSchoolDetails.Handler).Assembly);
+            services.AddMediatR(typeof(List.Handler).Assembly);
+            services.AddAutoMapper(typeof(MappingProfiles).Assembly);
             }
 
 

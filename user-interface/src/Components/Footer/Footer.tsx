@@ -1,5 +1,6 @@
-import "../../Css/Footer.css";
-import Emblem from "../../Media/emblem.png";
+
+ import "../../Css/Footer.css";
+ import Emblem from "../../Media/emblem.png";
 
 export const Footer = () => {
   return (
@@ -15,9 +16,9 @@ export const Footer = () => {
           </p>
         </li>
         <li>
-          <img src={Emblem} alt="Emblema e Kosovës" />
+           <img src={Emblem} alt="Emblema e Kosovës" /> 
         </li>
       </ul>
     </footer>
   );
-};
+}; 
