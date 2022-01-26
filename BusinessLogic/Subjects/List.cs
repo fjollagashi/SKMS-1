@@ -6,14 +6,14 @@ using Microsoft.EntityFrameworkCore;
 using Models;
 using Persistence;
 
-namespace BusinessLogic.Students
+namespace BusinessLogic.Subjects
 {
     public class List
     {
-        public class Query : IRequest<List<Student>>
+        public class Query : IRequest<List<Subject>>
         { }
 
-        public class Handler : IRequestHandler<Query, List<Student>>
+        public class Handler : IRequestHandler<Query, List<Subject>>
         {
             private readonly SKMSDatabaseContext context;
             public Handler(SKMSDatabaseContext context)
@@ -21,9 +21,9 @@ namespace BusinessLogic.Students
                 this.context = context;
             }
 
-            public async Task<List<Student>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<List<Subject>> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await context.Students.ToListAsync();
+                return await context.Subjects.ToListAsync();
             }
         }
     }

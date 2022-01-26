@@ -1,42 +1,38 @@
+
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
 using MediatR;
-using Models;
 using Persistence;
 
-namespace BusinessLogic.Students
+namespace BusinessLogic.Subjects
 {
-    public class Edit
+    public class Delete
     {
-
-
-
         public class Command : IRequest
         {
-            public Student Student { get; set; }
+            public Guid Id { get; set; }
         }
+
+
         public class Handler : IRequestHandler<Command>
         {
             private readonly SKMSDatabaseContext context;
-            private readonly IMapper mapper;
-            public Handler(SKMSDatabaseContext context, IMapper mapper)
+            public Handler(SKMSDatabaseContext context)
             {
-                this.mapper = mapper;
                 this.context = context;
             }
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                var student = await context.Students.FindAsync(request.Student.StudentId);
+                var subject = await context.Subjects.FindAsync(request.Id);
 
-                mapper.Map(request.Student, student);
+                context.Remove(subject);
 
                 await context.SaveChangesAsync();
 
                 return Unit.Value;
             }
         }
-
     }
 }

@@ -1,3 +1,4 @@
+
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -5,7 +6,7 @@ using MediatR;
 using Models;
 using Persistence;
 
-namespace BusinessLogic.Students
+namespace BusinessLogic.Teachers
 {
     public class Edit
     {
@@ -14,7 +15,7 @@ namespace BusinessLogic.Students
 
         public class Command : IRequest
         {
-            public Student Student { get; set; }
+            public Teacher Teacher { get; set; }
         }
         public class Handler : IRequestHandler<Command>
         {
@@ -28,9 +29,9 @@ namespace BusinessLogic.Students
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                var student = await context.Students.FindAsync(request.Student.StudentId);
+                var teacher = await context.Teachers.FindAsync(request.Teacher.TeacherId);
 
-                mapper.Map(request.Student, student);
+                mapper.Map(request.Teacher, teacher);
 
                 await context.SaveChangesAsync();
 

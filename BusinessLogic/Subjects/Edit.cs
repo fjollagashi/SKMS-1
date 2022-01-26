@@ -5,7 +5,7 @@ using MediatR;
 using Models;
 using Persistence;
 
-namespace BusinessLogic.Students
+namespace BusinessLogic.Subjects
 {
     public class Edit
     {
@@ -14,7 +14,7 @@ namespace BusinessLogic.Students
 
         public class Command : IRequest
         {
-            public Student Student { get; set; }
+            public Subject Subject { get; set; }
         }
         public class Handler : IRequestHandler<Command>
         {
@@ -28,9 +28,9 @@ namespace BusinessLogic.Students
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                var student = await context.Students.FindAsync(request.Student.StudentId);
+                var subject = await context.Subjects.FindAsync(request.Subject.SubjectId);
 
-                mapper.Map(request.Student, student);
+                mapper.Map(request.Subject, subject);
 
                 await context.SaveChangesAsync();
 

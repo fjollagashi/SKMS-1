@@ -9,6 +9,8 @@ namespace BusinessLogic.Core
          {
              CreateMap<Curriculum ,Curriculum>();
              CreateMap<Student ,Student>();
+             CreateMap<Teacher ,Teacher>();
+            CreateMap<Subject ,Subject>();
          }
     }
 }
