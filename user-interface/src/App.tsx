@@ -10,7 +10,7 @@ import { About } from "./Components/About/About";
 import { Children } from "./Components/ParentInterface/Children/Children";
 import { Profile } from "./Components/Profile/Profile";
 import { Child } from "./Components/ParentInterface/Child/Child";
-import { Manage } from "./Components/AdminInterface/Manage";
+import Manage from "./Components/AdminInterface/Manage";
 
 const FakeSchool: ISchool = {
   schoolId: "sdfs",

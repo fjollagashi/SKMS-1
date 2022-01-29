@@ -1,14 +1,15 @@
+import { observer } from "mobx-react-lite";
 import React from "react";
 import "../../Css/Manage.css";
 import { ISchool } from "../InterfaceRepository/ISchool";
 import { Loader } from "../Loader/Loader";
+import { useStore } from "../Stores/Store";
 import ClassroomModal from "./AdminModals/ClassroomModal";
-import { CurriculumModal } from "./AdminModals/CurriculumModal";
-import { StudentModal } from "./AdminModals/StudentModal";
-import { SubjectModal } from "./AdminModals/SubjectModal";
-import { TeacherModal } from "./AdminModals/TeacherModal";
-
-interface ManageProps {}
+import CurriculumModal from "./AdminModals/CurriculumModal";
+import StudentModal from "./AdminModals/StudentModal";
+import SubjectModal from "./AdminModals/SubjectModal";
+import TeacherModal from "./AdminModals/TeacherModal";
+import { ToastContainer } from "react-toastify";
 
 const FakeSchool: ISchool = {
   schoolId: "sdfs",
@@ -19,10 +20,19 @@ const FakeSchool: ISchool = {
   administrator: "",
 };
 
-export const Manage: React.FunctionComponent<ManageProps> = ({}) => {
+export default observer(function Manage() {
   const [School, SetSchool] = React.useState<ISchool | undefined>(undefined);
   const [ModalState, SetModalState] = React.useState("NONE");
 
+  const {
+    curriculumStore,
+    classroomStore,
+    teacherStore,
+    subjectStore,
+    studentStore,
+  } = useStore();
+
+  //has css animations
   const closeModal = () => {
     document.getElementsByClassName("modal")[0].classList.add("modal-close");
     document
@@ -37,6 +47,7 @@ export const Manage: React.FunctionComponent<ManageProps> = ({}) => {
         <Loader />
       ) : (
         <>
+          <ToastContainer />
           {ModalState === "STUDENT" ? (
             <StudentModal hide={closeModal} />
           ) : ModalState === "TEACHER" ? (
@@ -56,40 +67,40 @@ export const Manage: React.FunctionComponent<ManageProps> = ({}) => {
             <div className="yellow-buttons-container">
               <article className="yellow-button">
                 <h3>Numri i nxënësve në shkollë</h3>
-                <h2>542</h2>
+                <h2>{studentStore.getStudents().length}</h2>
                 <button onClick={() => SetModalState("STUDENT")}>
                   SHIKO LISTËN
                 </button>
               </article>
               <article className="yellow-button">
                 <h3>Numri i ligjëruesve në shkollë</h3>
-                <h2>542</h2>
+                <h2>{teacherStore.getTeachers().length}</h2>
                 <button onClick={() => SetModalState("TEACHER")}>
                   SHIKO LISTËN
                 </button>
               </article>
               <article className="yellow-button">
                 <h3>Numri i stafit ndihmës në shkollë</h3>
-                <h2>542</h2>
+                <h2>1</h2>
                 <button>SHIKO LISTËN</button>
               </article>
               <article className="yellow-button">
                 <h3>Numri i lëndëve në shkollë</h3>
-                <h2>542</h2>
+                <h2>{subjectStore.getSubjects().length}</h2>
                 <button onClick={() => SetModalState("SUBJECT")}>
                   SHIKO LISTËN
                 </button>
               </article>
               <article className="yellow-button">
                 <h3>Numri i kurrikulave në shkollë</h3>
-                <h2>542</h2>
+                <h2>{curriculumStore.getCurriculums().length}</h2>
                 <button onClick={() => SetModalState("CURRICULUM")}>
                   SHIKO LISTËN
                 </button>
               </article>
               <article className="yellow-button">
                 <h3>Numri i klasave në shkollë</h3>
-                <h2>542</h2>
+                <h2>{classroomStore.getClassrooms().length}</h2>
                 <button onClick={() => SetModalState("CLASS")}>
                   SHIKO LISTËN
                 </button>
@@ -100,4 +111,4 @@ export const Manage: React.FunctionComponent<ManageProps> = ({}) => {
       )}
     </section>
   );
-};
+});

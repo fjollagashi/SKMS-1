@@ -17,11 +17,10 @@ export default observer(function ClassroomModal({ hide }: ClassroomModalProps) {
     selectedClassroom,
     modalState,
     openModal,
-    selectClassroom,
-    deselectClassroom,
     getDefaultClassroom,
     createClassroom,
     updateClassroom,
+    deleteClassroom,
   } = classroomStore;
 
   const [classroom, setClassroom] = React.useState<IClassroom>(
@@ -91,7 +90,11 @@ export default observer(function ClassroomModal({ hide }: ClassroomModalProps) {
                           >
                             SHIKO DETAJET
                           </button>
-                          <button>FSHIJ</button>
+                          <button
+                            onClick={() => deleteClassroom(cls.classroomId)}
+                          >
+                            FSHIJ
+                          </button>
                           <button
                             onClick={() => openModal("EDIT", cls.classroomId)}
                           >

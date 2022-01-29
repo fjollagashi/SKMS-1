@@ -26,13 +26,22 @@ namespace BusinessLogic.Students
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
+
                 var student = await context.Students.FindAsync(request.Id);
 
                 context.Remove(student);
 
                 await context.SaveChangesAsync();
 
+                var user = await context.Users.FindAsync(request.Id);
+
+                context.Remove(user);
+
+                await context.SaveChangesAsync();
+
                 return Unit.Value;
+
+
             }
         }
     }

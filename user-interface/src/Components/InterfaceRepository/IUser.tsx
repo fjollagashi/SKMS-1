@@ -1,3 +1,5 @@
+import { IStreet } from "./IStreet";
+
 export interface IUser {
   userId: string;
   name: string;
@@ -6,4 +8,6 @@ export interface IUser {
   gender: string;
   birthday: string;
   profilePictureUrl: string;
+
+  userAddressNavigation?: IStreet;
 }

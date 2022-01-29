@@ -1,20 +1,20 @@
 {
   "version": 2,
-  "dgSpecHash": "Ncj8Ov8/6yON9vF1JRr08A8FIIM+Kc0o0aMN50zMUh76eZQdmmdJhvLxUdXMR4YcXU2gHR+nob2cAkILN7VSpg==",
+  "dgSpecHash": "a1vFq4gRcex7pFNrtsBA3CafAqUJnMeNbcQ3SmIYMqX/npYx7aUR4bPMhtKLiNsh5hl2F8pL6OoACSySR+hX+A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\PC\\Documents\\GitHub\\SKMS\\Models\\Models.csproj",
+  "projectFilePath": "C:\\Users\\DELL\\Desktop\\Semestri 5\\Dizajnimi i Softuerit\\LIGJËRATA\\Code\\Sistemi Kombëtar i Menaxhimit të Shkollave\\Models\\Models.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\PC\\.nuget\\packages\\automapper\\10.1.0\\automapper.10.1.0.nupkg.sha512",
-    "C:\\Users\\PC\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
-    "C:\\Users\\PC\\.nuget\\packages\\mediator\\1.0.2123\\mediator.1.0.2123.nupkg.sha512",
-    "C:\\Users\\PC\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
-    "C:\\Users\\PC\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\9.0.0\\mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
-    "C:\\Users\\PC\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
-    "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.0.0\\microsoft.extensions.dependencyinjection.abstractions.3.0.0.nupkg.sha512",
-    "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.options\\3.0.0\\microsoft.extensions.options.3.0.0.nupkg.sha512",
-    "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.primitives\\3.0.0\\microsoft.extensions.primitives.3.0.0.nupkg.sha512",
-    "C:\\Users\\PC\\.nuget\\packages\\servicestack.text\\3.2.2\\servicestack.text.3.2.2.nupkg.sha512",
-    "C:\\Users\\PC\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
+    "C:\\Users\\DELL\\.nuget\\packages\\automapper\\10.1.0\\automapper.10.1.0.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\mediator\\1.0.2123\\mediator.1.0.2123.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\9.0.0\\mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.0.0\\microsoft.extensions.dependencyinjection.abstractions.3.0.0.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\microsoft.extensions.options\\3.0.0\\microsoft.extensions.options.3.0.0.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\microsoft.extensions.primitives\\3.0.0\\microsoft.extensions.primitives.3.0.0.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\servicestack.text\\3.2.2\\servicestack.text.3.2.2.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
   ],
   "logs": [
     {

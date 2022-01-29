@@ -23,7 +23,7 @@ namespace BusinessLogic.Classgroups
 
             public async Task<List<Classgroup>> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await context.Classgroups.ToListAsync();
+                return await context.Classgroups.Include(cg => cg.HomeroomTeacherNavigation).ThenInclude(htn => htn.TeacherNavigation).ToListAsync();
             }
         }
     }

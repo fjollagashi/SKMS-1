@@ -96,6 +96,7 @@ div.modal-background {
   width: 100%;
   max-height: 70vh;
   overflow-y: scroll;
+  animation: backgroundopacityopen 0.5s linear;
 }
 
 ::-webkit-scrollbar {

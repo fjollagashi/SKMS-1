@@ -9,7 +9,22 @@ FakeData.set(id, {
   classroomId: id,
   classroomName: "Klasa III-4/VIII-4",
   capacity: 30,
-  classgroups: [],
+  classgroups: [
+    {
+      groupId: "3-4",
+      groupName: "III-4",
+      grade: "4",
+      classroom: id,
+      homeroomTeacher: "",
+    },
+    {
+      groupId: "8-4",
+      groupName: "VIII-4",
+      grade: "8",
+      classroom: id,
+      homeroomTeacher: "",
+    },
+  ],
   school: "Hysni Zajmi",
 });
 id = v4();
@@ -61,6 +76,10 @@ export default class ClassroomStore {
 
   deselectClassroom = () => {
     this.selectedClassroom = undefined;
+  };
+
+  deleteClassroom = (classroomId: string) => {
+    this.classroomRegistry.delete(classroomId);
   };
 
   createClassroom = (classroom: IClassroom) => {

@@ -35,14 +35,30 @@
   text-align: center;
 }
 
+.student-modal table tbody tr td:first-child {
+  font-size: 0.9em;
+  width: 15%;
+}
+
+.student-modal table tbody tr td:last-child {
+  width: 15%;
+}
+
 .student-modal button {
-  width: 100%;
+  width: 80%;
   font-size: 0.6em;
   border-radius: 15px;
   outline: none;
   border: none;
   color: #0043a7;
   padding: 2%;
+  margin: 2.5%;
+}
+
+.student-modal button:hover {
+  transition: all 0.2s ease-in-out;
+  background-color: #ffcc00;
+  color: #255db3;
 }
 
 .student-blue > button {
@@ -56,6 +72,8 @@
   width: 30%;
   margin: 5%;
   left: 30%;
+  border: 3pt solid white;
+  box-shadow: 5px 5px 0px #ffcc00;
 }
 
 .student-blue article {
@@ -89,6 +107,7 @@
 }
 
 .create-modal-section span {
+  min-width: 30%;
   color: #ffcc00;
   font-size: 1.5em;
   background-color: #255db3;
@@ -98,8 +117,16 @@
 }
 
 .create-modal-section input {
+  width: 50%;
   padding: 3px;
-  font-size: 1.1em;
+  font-size: 1.25em;
+  text-align: center;
+}
+
+.create-modal-section select {
+  width: 50%;
+  text-align: center;
+  font-size: 1.25em;
 }
 
 .create-modal-section:last-child {

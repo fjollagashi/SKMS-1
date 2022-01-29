@@ -25,11 +25,15 @@ namespace BusinessLogic.Students
             }
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                 context.Students.Add(request.Student);
 
-                 await context.SaveChangesAsync();
+                request.Student.ClassGroupNavigation = null;
+                request.Student.StudentNavigation.UserAddressNavigation = null;
 
-                 return Unit.Value;
+                context.Students.Add(request.Student);
+
+                await context.SaveChangesAsync();
+
+                return Unit.Value;
             }
         }
     }
