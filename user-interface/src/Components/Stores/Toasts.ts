@@ -1,9 +1,10 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export const ErrorToast = () => {
+export const ErrorToast = (message?: string) => {
   toast.error(
-    "Diçka nuk shkoi mirë. Ju lutem kontakti zyrën për ndihmë teknike.",
+    message ??
+      "Diçka nuk shkoi mirë. Ju lutem kontakti zyrën për ndihmë teknike.",
     {
       autoClose: 3000,
     }

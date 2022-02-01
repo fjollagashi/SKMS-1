@@ -13,14 +13,23 @@
 }
 
 #ParentProfile img {
-  width: 70%;
+  width: 50%;
+  border: 4pt solid #ffcc00;
 }
 
 #ParentProfile p,
 #ParentProfile h2 {
-  width: 70%;
+  width: 50%;
   color: white;
   text-align: center;
+}
+
+.profile-parent-image {
+  width: 150%;
+}
+
+#ParentProfile h2 {
+  color: #ffcc00;
 }
 
 #ParentProfile .profile-parent-details {

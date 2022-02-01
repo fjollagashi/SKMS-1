@@ -5,6 +5,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="BCrypt.Net" Version="0.1.0" />
 		<PackageReference Include="Mediator" Version="1.0.2123" />
 		<PackageReference Include="MediatR" Version="10.0.0" />
 		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.0" />

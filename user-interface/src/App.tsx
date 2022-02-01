@@ -1,4 +1,4 @@
-import React from "react";
+import React, { SyntheticEvent, useEffect, useState } from "react";
 import "./App.css";
 import { Footer } from "./Components/Footer/Footer";
 import { Header } from "./Components/Header/Header";
@@ -7,10 +7,14 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { LogIn } from "./Components/LogIn/LogIn";
 import { Home } from "./Components/Home/Home";
 import { About } from "./Components/About/About";
-import { Children } from "./Components/ParentInterface/Children/Children";
+import Children from "./Components/ParentInterface/Children/Children";
 import { Profile } from "./Components/Profile/Profile";
 import { Child } from "./Components/ParentInterface/Child/Child";
 import Manage from "./Components/AdminInterface/Manage";
+import agent from "./Agent/Agent";
+import { IUser } from "./Components/InterfaceRepository/IUser";
+import { observer } from "mobx-react-lite";
+import { useStore } from "./Components/Stores/Store";
 
 const FakeSchool: ISchool = {
   schoolId: "sdfs",
@@ -21,33 +25,55 @@ const FakeSchool: ISchool = {
   administrator: "",
 };
 
-function App() {
-  const [LoggedIn, SetLoggedIn] = React.useState<boolean>(false);
-  const [School, SetSchool] = React.useState<ISchool>({} as ISchool);
+export default observer(function App() {
+  const { userStore } = useStore();
+  const { loggedIn, logUser } = userStore;
+  const [School, SetSchool] = useState<ISchool>({} as ISchool);
+  const [User, setUser] = useState<IUser>({} as IUser);
 
   let navigate = useNavigate();
 
-  const logOut = (): void => {
-    localStorage.removeItem("ROLE");
-    SetLoggedIn(false);
+  const handleInputChange = (e: SyntheticEvent<HTMLInputElement>) => {
+    setUser({
+      ...User,
+      [e.currentTarget.name]: e.currentTarget.value,
+    });
+  };
+
+  const logOut = async () => {
+    await userStore.logOut();
     SetSchool({} as ISchool);
     navigate("/");
   };
 
-  const logIn = (): void => {
-    localStorage.setItem("ROLE", "ADMIN");
-    SetSchool(FakeSchool);
-    SetLoggedIn(true);
-    navigate("ballina");
+  const logIn = async () => {
+    let message = await userStore.getToken(User);
+    if (message === "OK") {
+      SetSchool(FakeSchool);
+      navigate("ballina");
+    } else console.log(message);
   };
+
+  useEffect(() => {
+    if (loggedIn) SetSchool(FakeSchool);
+  }, [loggedIn]);
 
   return (
     <>
-      <Header School={School} LoggedIn={LoggedIn} />
+      <Header School={School} LoggedIn={loggedIn} />
       <div id="background"></div>
       <main>
         <Routes>
-          <Route path="/" element={<LogIn logIn={logIn} />} />
+          <Route
+            path="/"
+            element={
+              <LogIn
+                logIn={logIn}
+                logged={loggedIn}
+                buildUser={handleInputChange}
+              />
+            }
+          />
           <Route path="ballina" element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="femijet" element={<Children />} />
@@ -59,6 +85,4 @@ function App() {
       <Footer />
     </>
   );
-}
-
-export default App;
+});

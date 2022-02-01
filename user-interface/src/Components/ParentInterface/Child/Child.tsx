@@ -1,205 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import agent from "../../../Agent/Agent";
 import "../../../Css/Child.css";
 import { IGrade } from "../../InterfaceRepository/IGrade";
+import { ISchedule } from "../../InterfaceRepository/ISchedule";
 import { IStudent } from "../../InterfaceRepository/IStudent";
 import { ISubject } from "../../InterfaceRepository/ISubject";
 import { AbsenceModal } from "./AbsenceModal";
 import { RemarkModal } from "./RemarkModal";
 import { ScheduleModal } from "./ScheduleModal";
-
-const FakeChild: IStudent = {
-  studentId: "sdfs",
-  classGroup: "sdfs",
-  school: "sdfsd",
-  grades: [
-    {
-      gradeId: "1",
-      student: "dsf",
-      subject: "sub1",
-      teacher: "",
-      value: 5,
-      academicYear: 2021,
-      semester: 1,
-      subjectsTeacher: {
-        subjectId: "sub1",
-        teacherId: "",
-        subject: {
-          subjectId: "sub1",
-          subjectName: "Matematika III",
-          curriculum: "klasa3",
-        },
-      },
-    },
-    {
-      gradeId: "2",
-      student: "dsf",
-      subject: "sub1",
-      teacher: "",
-      value: 5,
-      academicYear: 2021,
-      semester: 1,
-      subjectsTeacher: {
-        subjectId: "sub1",
-        teacherId: "",
-        subject: {
-          subjectId: "sub1",
-          subjectName: "Matematika III",
-          curriculum: "klasa3",
-        },
-      },
-    },
-    {
-      gradeId: "3",
-      student: "dsf",
-      subject: "sub1",
-      teacher: "",
-      value: 4,
-      academicYear: 2021,
-      semester: 1,
-      subjectsTeacher: {
-        subjectId: "sub1",
-        teacherId: "",
-        subject: {
-          subjectId: "sub1",
-          subjectName: "Matematika III",
-          curriculum: "klasa3",
-        },
-      },
-    },
-    {
-      gradeId: "4",
-      student: "dsf",
-      subject: "sub1",
-      teacher: "",
-      value: 5,
-      academicYear: 2021,
-      semester: 2,
-      subjectsTeacher: {
-        subjectId: "sub1",
-        teacherId: "",
-        subject: {
-          subjectId: "sub1",
-          subjectName: "Matematika III",
-          curriculum: "klasa3",
-        },
-      },
-    },
-    {
-      gradeId: "5",
-      student: "dsf",
-      subject: "sub2",
-      teacher: "",
-      value: 5,
-      academicYear: 2021,
-      semester: 1,
-      subjectsTeacher: {
-        subjectId: "sub2",
-        teacherId: "",
-        subject: {
-          subjectId: "sub2",
-          subjectName: "Anglisht III",
-          curriculum: "klasa3",
-        },
-      },
-    },
-    {
-      gradeId: "6",
-      student: "dsf",
-      subject: "sub2",
-      teacher: "",
-      value: 3,
-      academicYear: 2021,
-      semester: 1,
-      subjectsTeacher: {
-        subjectId: "sub2",
-        teacherId: "",
-        subject: {
-          subjectId: "sub2",
-          subjectName: "Anglisht III",
-          curriculum: "klasa3",
-        },
-      },
-    },
-    {
-      gradeId: "7",
-      student: "dsf",
-      subject: "sub2",
-      teacher: "",
-      value: 5,
-      academicYear: 2021,
-      semester: 1,
-      subjectsTeacher: {
-        subjectId: "sub2",
-        teacherId: "",
-        subject: {
-          subjectId: "sub2",
-          subjectName: "Anglisht III",
-          curriculum: "klasa3",
-        },
-      },
-    },
-    {
-      gradeId: "8",
-      student: "dsf",
-      subject: "sub2",
-      teacher: "",
-      value: 5,
-      academicYear: 2021,
-      semester: 2,
-      subjectsTeacher: {
-        subjectId: "sub2",
-        teacherId: "",
-        subject: {
-          subjectId: "sub2",
-          subjectName: "Anglisht III",
-          curriculum: "klasa3",
-        },
-      },
-    },
-    {
-      gradeId: "9",
-      student: "dsf",
-      subject: "sub3",
-      teacher: "",
-      value: 5,
-      academicYear: 2021,
-      semester: 1,
-      subjectsTeacher: {
-        subjectId: "sub3",
-        teacherId: "",
-        subject: {
-          subjectId: "sub3",
-          subjectName: "Shqip III",
-          curriculum: "klasa3",
-        },
-      },
-    },
-    {
-      gradeId: "10",
-      student: "dsf",
-      subject: "sub3",
-      teacher: "",
-      value: 5,
-      academicYear: 2021,
-      semester: 1,
-      subjectsTeacher: {
-        subjectId: "sub3",
-        teacherId: "",
-        subject: {
-          subjectId: "sub3",
-          subjectName: "Shqip III",
-          curriculum: "klasa3",
-        },
-      },
-    },
-  ],
-};
+import { GetDate } from "../../../Util";
+import { Loader } from "../../Loader/Loader";
 
 export const Child = () => {
   let { id } = useParams();
+  let navigate = useNavigate();
+
   const [ModalState, SetModalState] = React.useState<string>("NONE");
-  const [child, setChild] = useState<IStudent>(FakeChild);
+  const [child, setChild] = useState<IStudent>({} as IStudent);
 
   const gradeSorter = (a: IGrade, b: IGrade): number => {
     if (a.semester < b.semester) return -1;
@@ -216,66 +34,90 @@ export const Child = () => {
   };
 
   const getUniqueSubjects = (): ISubject[] => {
+    if (!child.grades) return [] as ISubject[];
     let subjects: ISubject[] = [];
     child.grades!.forEach((grade) => {
       if (
-        subjects.filter((sub) => sub.subjectId === grade.subject).length === 0
+        subjects.filter((sub) => sub.subjectId === grade.teacher).length === 0
       )
         subjects.push(grade.subjectsTeacher!.subject!);
     });
     return subjects;
   };
 
+  useEffect(() => {
+    //if (!id) return;
+    const get = async () => {
+      let user = await agent.Students.getDetails(id!);
+      setChild(user);
+    };
+    get();
+  }, [id]);
+
+  if (Object.keys(child).length === 0)
+    return (
+      <section id="child">
+        <Loader />
+      </section>
+    );
+
   return (
     <section id="Child">
       {ModalState === "NONE" ? (
         <></>
       ) : ModalState === "SCHEDULE" ? (
-        <ScheduleModal hide={HideModal} />
-      ) : ModalState === "ABSENCE" ? (
-        <AbsenceModal hide={HideModal} />
-      ) : (
-        <RemarkModal hide={HideModal} />
-      )}
-      <h2>Profili i Altina Hodaj {id}</h2>
-      <div className="child-bluebackground">
-        <button>KTHEHU...</button>
-        <img
-          src="https://th.bing.com/th/id/OIP.BHOqw309oBOx1BIr2aa1ewHaHa?pid=ImgDet&rs=1"
-          alt=""
+        <ScheduleModal
+          hide={HideModal}
+          //@ts-ignore
+          schedule={child.classGroupNavigation?.schedules[0]}
         />
+      ) : ModalState === "ABSENCE" ? (
+        <AbsenceModal absences={child!.absences!} hide={HideModal} />
+      ) : (
+        //@ts-ignore
+        <RemarkModal hide={HideModal} remarks={child?.remarks} />
+      )}
+      <h2>
+        Profili i{" "}
+        {child.studentNavigation?.name + " " + child.studentNavigation?.surname}
+      </h2>
+      <div className="child-bluebackground">
+        <button onClick={() => navigate("/femijet")}>KTHEHU...</button>
+        <img src={child.studentNavigation?.profilePictureUrl} alt="" />
         <div className="child-details">
           <article>
             <h3>Data e lindjes</h3>
-            <p>dsfds,fsdfsdf,sdfs</p>
+            <p>{GetDate(child.studentNavigation?.birthday) || ""}</p>
           </article>
           <article>
             <h3>Gjinia</h3>
-            <p>+383423 32423423</p>
+            <p>{child.studentNavigation?.gender}</p>
           </article>
           <article>
             <h3>Suksesi</h3>
-            <p>Vrelle</p>
-          </article>
-          <article>
-            <h3>Suksesi</h3>
-            <p>Vrelle</p>
+            <p>Shkelqyeshëm</p>
           </article>
         </div>
         <h2>Të dhënat studentore</h2>
         <div className="child-details child-details-school">
           <article>
             <h3>Klasa</h3>
-            <p>III - 3</p>
+            <p>{child.classGroupNavigation?.groupName}</p>
           </article>
           <article>
             <h3>Kujdestari</h3>
-            <p>Arben Vitija</p>
+            <p>
+              {child.classGroupNavigation?.homeroomTeacherNavigation
+                ?.teacherNavigation?.name +
+                " " +
+                child.classGroupNavigation?.homeroomTeacherNavigation
+                  ?.teacherNavigation?.surname}
+            </p>
           </article>
           <article>
             <h3>Notat</h3>
             <Grades
-              grades={child.grades!.sort((a, b) => gradeSorter(a, b))}
+              grades={child.grades?.sort((a, b) => gradeSorter(a, b))}
               gradesSubjects={getUniqueSubjects()}
             />
           </article>
@@ -304,7 +146,7 @@ export const Child = () => {
 };
 
 interface GradesProps {
-  grades: IGrade[];
+  grades?: IGrade[];
   gradesSubjects: ISubject[];
 }
 
@@ -317,10 +159,11 @@ const Grades = ({ grades, gradesSubjects }: GradesProps) => {
   };
 
   const getGradesBySemester = (semester: number): IGrade[] => {
+    if (!grades || !selectedSubject) return [] as IGrade[];
     return grades.filter(
       (grade) =>
         grade.semester === semester &&
-        grade.subject === selectedSubject.subjectId
+        grade.teacher === selectedSubject.subjectId
     );
   };
 
@@ -358,7 +201,9 @@ const Grades = ({ grades, gradesSubjects }: GradesProps) => {
         >
           {subjects.map((subject) => {
             return (
-              <option value={subject.subjectId}>{subject.subjectName}</option>
+              <option key={subject.subjectId} value={subject.subjectId}>
+                {subject.subjectName}
+              </option>
             );
           })}
         </select>
@@ -389,7 +234,7 @@ const Grades = ({ grades, gradesSubjects }: GradesProps) => {
           </tr>
         </tbody>
       </table>
-      <p>Notat për lëndën {selectedSubject.subjectName}</p>
+      <p>Notat për lëndën {selectedSubject?.subjectName || ""}</p>
     </section>
   );
 };

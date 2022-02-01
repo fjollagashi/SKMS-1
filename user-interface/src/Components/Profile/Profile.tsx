@@ -1,12 +1,13 @@
 import { AdminProfile } from "../AdminInterface/AdminProfile";
-import { ParentProfile } from "../ParentInterface/ParentProfile";
+import ParentProfile from "../ParentInterface/ParentProfile";
+import { useStore } from "../Stores/Store";
 
 interface ProfileProps {
   logOut: () => void;
 }
 
 export const Profile: React.FunctionComponent<ProfileProps> = ({ logOut }) => {
-  let role = localStorage.getItem("ROLE");
+  const { role } = useStore().userStore;
 
   return (
     <>

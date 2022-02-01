@@ -1,4 +1,5 @@
 using AutoMapper;
+using BusinessLogic.AuthHelpers;
 using BusinessLogic.Core;
 using BusinessLogic.Curriculums;
 using BusinessLogic.Schools;
@@ -11,7 +12,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Persistence;
-
 
 namespace Services
 {
@@ -43,6 +43,7 @@ namespace Services
             });
             services.AddMediatR(typeof(GetSchoolDetails.Handler).Assembly);
             services.AddMediatR(typeof(List.Handler).Assembly);
+            services.AddSingleton<IJwtService, JwtService>();
 
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
             services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);

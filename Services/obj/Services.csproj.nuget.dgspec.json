@@ -57,6 +57,14 @@
               "target": "Package",
               "version": "[8.1.0, )"
             },
+            "BCrypt.Net": {
+              "target": "Package",
+              "version": "[0.1.0, )"
+            },
+            "IdentityModel": {
+              "target": "Package",
+              "version": "[5.1.1, )"
+            },
             "MediatR": {
               "target": "Package",
               "version": "[10.0.0, )"
@@ -65,9 +73,25 @@
               "target": "Package",
               "version": "[1.0.2123, )"
             },
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.13, )"
+            },
+            "Microsoft.IdentityModel": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.15.1, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.15.1, )"
             }
           },
           "imports": [
@@ -296,6 +320,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "BCrypt.Net": {
+              "target": "Package",
+              "version": "[0.1.0, )"
+            },
             "MediatR": {
               "target": "Package",
               "version": "[10.0.0, )"

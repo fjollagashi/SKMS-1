@@ -6,6 +6,7 @@ import CurriculumStore from "./CurriculumStore";
 import StudentStore from "./StudentStore";
 import SubjectStore from "./SubjectStore";
 import TeacherStore from "./TeacherStore";
+import UserStore from "./UserStore";
 
 export const Store = {
   classroomStore: new ClassroomStore(),
@@ -15,6 +16,7 @@ export const Store = {
   studentStore: new StudentStore(),
   classGroupStore: new ClassGroupStore(),
   addressStore: new AddressStore(),
+  userStore: new UserStore(),
 };
 
 export const StoreContext = createContext(Store);

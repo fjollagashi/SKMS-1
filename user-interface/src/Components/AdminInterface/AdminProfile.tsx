@@ -1,27 +1,29 @@
 import "../../Css/ParentProfile.css";
-import { IParent } from "../InterfaceRepository/IParent";
-
-const FakeParent: IParent = {
-  parentId: "dfsdfs",
-  phoneNumber: "1231231",
-};
+import { GetDate } from "../../Util";
+import { useStore } from "../Stores/Store";
 
 interface props {
   logOut: () => void;
 }
 
 export const AdminProfile: React.FunctionComponent<props> = ({ logOut }) => {
+  const { loggedAdmin } = useStore().userStore;
+
   return (
     <section id="ParentProfile">
       <div className="profile-blue">
         <div className="flex flex-row">
           <div className="profile-parent-image">
             <img
-              src="https://th.bing.com/th/id/OIP.BHOqw309oBOx1BIr2aa1ewHaHa?pid=ImgDet&rs=1"
+              src={loggedAdmin?.administratorNavigation?.profilePictureUrl}
               alt=""
             />
-            <h2>Adriatik Kelmendi</h2>
-            <p>23 Gusht, 1977</p>
+            <h2>
+              {loggedAdmin?.administratorNavigation?.name +
+                " " +
+                loggedAdmin?.administratorNavigation?.surname}
+            </h2>
+            <p>{GetDate(loggedAdmin?.administratorNavigation?.birthday)}</p>
           </div>
           <div className="profile-parent-details">
             <article>
@@ -30,11 +32,17 @@ export const AdminProfile: React.FunctionComponent<props> = ({ logOut }) => {
             </article>
             <article>
               <h3>Numri i telefonit</h3>
-              <p>+383423 32423423</p>
+              <p>{loggedAdmin?.phoneNumber}</p>
             </article>
             <article>
               <h3>Vendbanimi</h3>
-              <p>Vrelle</p>
+              <p>
+                {loggedAdmin?.administratorNavigation?.userAddressNavigation
+                  ?.streetName +
+                  ", " +
+                  loggedAdmin?.administratorNavigation?.userAddressNavigation
+                    ?.cityNavigation?.cityName}
+              </p>
             </article>
           </div>
         </div>

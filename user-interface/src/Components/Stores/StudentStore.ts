@@ -51,9 +51,10 @@ export default class StudentStore {
     try {
       await agent.Students.add(student);
       runInAction(() => {
-        this.studentsRegistry.set(student.studentId, student);
+        this.studentsRegistry.set(student.studentId, student); //key, value
         this.selectedStudent = student;
         this.modalState = "LIST";
+        SuccessToast();
       });
     } catch (error) {
       console.log(error);
@@ -70,7 +71,9 @@ export default class StudentStore {
           ? this.selectedStudent.studentId === studentId
             ? this.deselectStudent()
             : console.log("")
-          : SuccessToast();
+          : console.log("");
+
+        SuccessToast();
       });
     } catch (error) {
       ErrorToast();

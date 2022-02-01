@@ -1,18 +1,16 @@
 import "../../Css/HeaderNavBar.css";
 import { Link, Router } from "react-router-dom";
 import React from "react";
+import { useStore } from "../Stores/Store";
+import { observer } from "mobx-react-lite";
 
-export const HeaderNavBar = () => {
+export default observer(function HeaderNavBar() {
+  const { role } = useStore().userStore;
   const [changed, isChanged] = React.useState(false);
-  const [role, setRole] = React.useState<string | null>("PARENT");
 
   const update = () => {
     isChanged(true);
   };
-
-  React.useEffect(() => {
-    setRole(localStorage.getItem("ROLE"));
-  }, [role]);
 
   const AddClicked = (stringToContain: string): string => {
     if (changed) isChanged(false);
@@ -52,4 +50,4 @@ export const HeaderNavBar = () => {
       </li>
     </ul>
   );
-};
+});

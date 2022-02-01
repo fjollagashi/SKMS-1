@@ -1,40 +1,57 @@
 import "../../Css/ParentProfile.css";
-import { IParent } from "../InterfaceRepository/IParent";
-
-const FakeParent: IParent = {
-  parentId: "dfsdfs",
-  phoneNumber: "1231231",
-};
+import { useStore } from "../Stores/Store";
+import { observer } from "mobx-react-lite";
+import { GetDate } from "../../Util";
 
 interface props {
   logOut: () => void;
 }
 
-export const ParentProfile: React.FunctionComponent<props> = ({ logOut }) => {
+export default observer(function ParentProfile({ logOut }: props) {
+  const { loggedParent, loggedParentChildren } = useStore().userStore;
+
   return (
     <section id="ParentProfile">
       <div className="profile-blue">
         <div className="flex flex-row">
           <div className="profile-parent-image">
             <img
-              src="https://th.bing.com/th/id/OIP.BHOqw309oBOx1BIr2aa1ewHaHa?pid=ImgDet&rs=1"
+              src={loggedParent?.parentNavigation?.profilePictureUrl}
               alt=""
             />
-            <h2>Andrea Ibrahimaj</h2>
-            <p>23 Gusht, 1987</p>
+            <h2>
+              {loggedParent?.parentNavigation?.name +
+                " " +
+                loggedParent?.parentNavigation?.surname}
+            </h2>
+            <p>{GetDate(loggedParent?.parentNavigation?.birthday)}</p>
           </div>
           <div className="profile-parent-details">
             <article>
               <h3>Fëmijët</h3>
-              <p>dsfds,fsdfsdf,sdfs</p>
+              {loggedParentChildren?.map((child) => {
+                return (
+                  <p>
+                    {child.studentNavigation?.name +
+                      " " +
+                      child.studentNavigation?.surname}
+                  </p>
+                );
+              })}
             </article>
             <article>
               <h3>Numri i telefonit</h3>
-              <p>+383423 32423423</p>
+              <p>+383 45 667 134</p>
             </article>
             <article>
               <h3>Vendbanimi</h3>
-              <p>Vrelle</p>
+              <p>
+                {loggedParent?.parentNavigation?.userAddressNavigation
+                  ?.streetName +
+                  ", " +
+                  loggedParent?.parentNavigation?.userAddressNavigation
+                    ?.cityNavigation?.cityName}
+              </p>
             </article>
           </div>
         </div>
@@ -42,4 +59,4 @@ export const ParentProfile: React.FunctionComponent<props> = ({ logOut }) => {
       </div>
     </section>
   );
-};
+});

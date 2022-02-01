@@ -5,6 +5,7 @@ import "../../../Css/CustomModals/StudentDetailsModal.css";
 import { observer } from "mobx-react-lite";
 import { useStore } from "../../Stores/Store";
 import { IClassGroup } from "../../InterfaceRepository/IClassGroup";
+import { GetDate } from "../../../Util";
 
 interface StudentModalProps {
   hide: () => void;
@@ -98,7 +99,7 @@ export default observer(function StudentModal({ hide }: StudentModalProps) {
                     return (
                       <tr>
                         <td>{student.studentId}</td>
-                        <td>{student.studentNavigation?.name}</td>
+                        <td>{student.studentNavigation!.name}</td>
                         <td>{student.studentNavigation?.surname}</td>
                         <td>{student.classGroupNavigation?.groupName}</td>
                         <td>
@@ -186,7 +187,10 @@ export default observer(function StudentModal({ hide }: StudentModalProps) {
                 </article>
                 <article>
                   <h3>Data e lindjes</h3>
-                  <p>{Student.studentNavigation?.birthday || "E pa caktuar"}</p>
+                  <p>
+                    {GetDate(Student.studentNavigation?.birthday) ||
+                      "E pa caktuar"}
+                  </p>
                 </article>
                 <article>
                   <h3>Gjinia</h3>
@@ -245,7 +249,11 @@ export default observer(function StudentModal({ hide }: StudentModalProps) {
                     Zgjedh adresën
                   </option>
                   {addressStore.getAddresses().map((ad) => {
-                    return <option value={ad.streetId}>{ad.streetName}</option>;
+                    return (
+                      <option value={ad.streetId}>
+                        {ad.streetName + ", " + ad.cityNavigation?.cityName}
+                      </option>
+                    );
                   })}
                 </select>
               </div>
@@ -296,7 +304,6 @@ export default observer(function StudentModal({ hide }: StudentModalProps) {
           </>
         ) : modalState === "EDIT" ? (
           <>
-            {console.log(Student)}
             <h2>Ndrysho detajet e nxënësit</h2>
             <div className="student-blue">
               <div className="create-modal-section">
@@ -334,7 +341,7 @@ export default observer(function StudentModal({ hide }: StudentModalProps) {
                           Student.studentNavigation?.userAddress === ad.streetId
                         }
                       >
-                        {ad.streetName}
+                        {ad.streetName + ", " + ad.cityNavigation?.cityName}
                       </option>
                     );
                   })}

@@ -21,5 +21,14 @@ namespace Services.Controllers
             return await Mediator.Send(new GetSchoolDetails.Query { SchoolID = id });
         }
 
+        //We only have one school right night so the ID part can be added later
+        [HttpGet("getSchoolArticles")]
+
+        public async Task<List<Article>> GetSchoolArticles()
+        {
+            return await Mediator.Send(new BusinessLogic.Articles.List.Query { });
+        }
+
+
     }
 }

@@ -1,7 +1,7 @@
 import Emblem from "../../Media/emblem.png";
 import { ISchool } from "../InterfaceRepository/ISchool";
 import "../../Css/Header.css";
-import { HeaderNavBar } from "./HeaderNavBar";
+import HeaderNavBar from "./HeaderNavBar";
 
 interface IProps {
   School: ISchool;

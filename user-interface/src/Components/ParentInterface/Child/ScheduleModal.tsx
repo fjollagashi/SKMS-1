@@ -1,12 +1,16 @@
+import { ISchedule } from "../../InterfaceRepository/ISchedule";
 import { Modal } from "../../Modal/Modal";
 
 interface ChildModalProps {
   hide: () => void;
+  schedule: ISchedule | undefined;
 }
 
-export const ScheduleModal: React.FunctionComponent<ChildModalProps> = ({
-  hide,
-}) => {
+export const ScheduleModal = ({ hide, schedule }: ChildModalProps) => {
+  schedule?.periods?.sort((a, b) => a.slot.localeCompare(b.slot));
+
+  const days = ["E Hënë", "E Martë", "E Mërkurë", "E Enjte", "E Premte"];
+
   return (
     <Modal hide={hide}>
       <table id="Schedule">
@@ -22,51 +26,20 @@ export const ScheduleModal: React.FunctionComponent<ChildModalProps> = ({
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>E HËNË</td>
-            <td>ORA E PARË</td>
-            <td>ORA E DYTË</td>
-            <td>ORA E TRETË</td>
-            <td>ORA E KATËRT</td>
-            <td>ORA E PESTË</td>
-            <td>ORA E GJASHTË</td>
-          </tr>
-          <tr>
-            <td>E MARTË</td>
-            <td>ORA E PARË</td>
-            <td>ORA E DYTË</td>
-            <td>ORA E TRETË</td>
-            <td>ORA E KATËRT</td>
-            <td>ORA E PESTË</td>
-            <td>ORA E GJASHTË</td>
-          </tr>
-          <tr>
-            <td>E MËRKURË</td>
-            <td>ORA E PARË</td>
-            <td>ORA E DYTË</td>
-            <td>ORA E TRETË</td>
-            <td>ORA E KATËRT</td>
-            <td>ORA E PESTË</td>
-            <td>ORA E GJASHTË</td>
-          </tr>
-          <tr>
-            <td>E ENJTE</td>
-            <td>ORA E PARË</td>
-            <td>ORA E DYTË</td>
-            <td>ORA E TRETË</td>
-            <td>ORA E KATËRT</td>
-            <td>ORA E PESTË</td>
-            <td>ORA E GJASHTË</td>
-          </tr>
-          <tr>
-            <td>E PREMTE</td>
-            <td>ORA E PARË</td>
-            <td>ORA E DYTË</td>
-            <td>ORA E TRETË</td>
-            <td>ORA E KATËRT</td>
-            <td>ORA E PESTË</td>
-            <td>ORA E 6-TË</td>
-          </tr>
+          {days.map((day) => {
+            return (
+              <tr>
+                <td>{day}</td>
+                {schedule?.periods?.map((period) => {
+                  return (
+                    period.dayOfTheWeek === day && (
+                      <td>{period.subjectsTeacher?.subject?.subjectName}</td>
+                    )
+                  );
+                })}
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </Modal>

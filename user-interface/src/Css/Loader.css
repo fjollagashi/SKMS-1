@@ -4,6 +4,7 @@
   width: 100%;
   min-height: 60vh;
   background-color: white;
+  border: 1pt solid grey;
 }
 
 .loader img {
